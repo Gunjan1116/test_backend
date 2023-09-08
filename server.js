@@ -27,7 +27,9 @@ app.use(cors());
 //   useUnifiedTopology: true,
 //   connectTimeoutMS: 30000, // Set a higher timeout value
 // });
-
+app.get("/",(req,res)=>{
+  res.send("Welcome to Basic End Point API");
+})
 // Include routes
 app.use('/registration', userRoute);
 app.use('/post', postRoute); 
