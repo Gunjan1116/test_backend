@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const { connection } = require("./config/db");
 const userRoute = require('./routes/userRoute');
 const postRoute = require('./routes/postRoute'); 
 const authRoute = require("./routes/authRoute");
@@ -21,11 +22,11 @@ app.use(cors());
 // app.use("/uploads", express.static("uploads"));
 
 // mongoose connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  connectTimeoutMS: 30000, // Set a higher timeout value
-});
+// mongoose.connect(process.env.MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   connectTimeoutMS: 30000, // Set a higher timeout value
+// });
 
 // Include routes
 app.use('/registration', userRoute);
@@ -35,6 +36,13 @@ app.use("/like", likedPostsRoute);
 app.use("/comment", commentRoute);
 app.use("/profile", profileRoute);
 
-app.listen(PORT, () => {
-  console.log(`Running on PORT ${PORT}`);
-});
+app.listen(PORT, async () => {
+  try {
+      await connection;
+      console.log("Connected to DB");
+      console.log(`Server is running at port ${PORT}`)
+  } catch (error) {
+      console.log("Not able to connect to DB");
+      console.log(error);
+  }
+})
