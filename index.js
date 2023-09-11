@@ -12,7 +12,7 @@ const {connection}=require("./config/db")
 
 const app = express();
 app.use(express.json());
-const PORT = 8082;
+
  
 // Enable CORS middleware
 app.use(cors());
@@ -39,11 +39,11 @@ app.use("/like", likedPostsRoute);
 app.use("/comment", commentRoute);
 app.use("/profile", profileRoute);
 
-app.listen(PORT, async () => {
+app.listen(process.env.PORT, async () => {
   try {
       await connection;
       console.log("Connected to DB");
-      console.log(`Server is running at port ${PORT}`)
+      console.log(`Server is running at port ${process.env.PORT}`)
   } catch (error) {
       console.log("Not able to connect to DB");
       console.log(error);
