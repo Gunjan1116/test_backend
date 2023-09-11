@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -9,7 +9,7 @@ const authRoute = require("./routes/authRoute");
 const likedPostsRoute = require("./routes/likedPostsRoute")
 const commentRoute = require("./routes/commentRoute")
 const profileRoute = require("./routes/profileRoute")
-
+require('dotenv').config();
 const app = express();
 app.use(express.json());
 const PORT = 8082;
