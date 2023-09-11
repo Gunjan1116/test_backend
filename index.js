@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
-const postRoute = require('./routes/postRoute'); 
 const authRoute = require("./routes/authRoute");
 const likedPostsRoute = require("./routes/likedPostsRoute")
 const commentRoute = require("./routes/commentRoute")
@@ -27,7 +26,6 @@ app.get("/",(req,res)=>{
 
 // Include routes
 app.use('/registration', userRoute);
-app.use('/post', postRoute); 
 app.use("/auth", authRoute);
 app.use("/like", likedPostsRoute);
 app.use("/comment", commentRoute);
