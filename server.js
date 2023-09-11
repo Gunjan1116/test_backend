@@ -27,6 +27,9 @@ app.use("/uploads", express.static("uploads"));
 //   useUnifiedTopology: true,
 //   connectTimeoutMS: 30000, // Set a higher timeout value
 // });
+app.get("/",(req,res)=>{
+  res.send("Welcome to Basic Home API");
+})
 
 // Include routes
 app.use('/registration', userRoute);
