@@ -8,7 +8,7 @@ const profileSchema = mongoose.Schema(
       required: true,
     },
     profileName: String,
-    data: Buffer,
+    filePath: String,
     contentType: String,
   },
   {
