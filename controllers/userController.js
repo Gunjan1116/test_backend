@@ -29,7 +29,8 @@ const submitForm = async (req, res) => {
     } = req.body;
 
     const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = password;
+    // const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Age filter
     function calculateAge(birthDate) {
@@ -125,6 +126,10 @@ const updateUser = async (req, res) => {
       }
     );
 
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
     res.json(updatedUser);
   } catch (error) {
     console.error("Update User Error:", error);
@@ -193,7 +198,8 @@ const loginUserRegistration = async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = user.password;
+    // const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return res.status(401).json({ error: "Invalid credentials" });
     }

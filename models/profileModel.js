@@ -7,9 +7,9 @@ const profileSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
-    profileName: String,
-    filePath: String,
-    contentType: String,
+    profileUrl: String,
+    // filePath: String,
+    // contentType: String,
   },
   {
     timestamps: true,
