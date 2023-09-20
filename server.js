@@ -11,7 +11,7 @@ const profileRoute = require("./routes/profileRoute")
 
 const app = express();
 app.use(express.json());
-const PORT = 8082;
+// const PORT = 8082;
 
 // Enable CORS middleware
 app.use(cors());
@@ -28,6 +28,9 @@ app.use("/uploads", express.static("uploads"));
 // });
 
 // Include routes
+app.get("/",(req,res)=>{
+  res.send("Welcome to Basic End Point!")
+})
 app.use('/registration', userRoute);
 app.use('/post', postRoute); 
 app.use("/auth", authRoute);
