@@ -36,8 +36,8 @@ app.use('/registration', userRoute);
 app.use('/post', postRoute); 
 app.use("/auth", authRoute);
 app.use("/like", likedPostsRoute);
-app.use("/comment", commentRoute);
-app.use("/profile", profileRoute);
+app.use("/comment", commentRoute); 
+app.use("/profile", profileRoute); 
 
 
 app.listen(process.env.PORT, async () => {
@@ -49,4 +49,4 @@ app.listen(process.env.PORT, async () => {
       console.log("Not able to connect to DB");
       console.log(error);
   }
-})
+}) 
